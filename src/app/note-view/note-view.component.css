@@ -1,0 +1,25 @@
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.search {
+    width: 50%;
+    margin: 0.4em auto;
+}
+.add-note {
+    width: 50%;
+    margin: 1em auto;
+}
+
+.add-note-button {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin: 4em; 
+}
+
+

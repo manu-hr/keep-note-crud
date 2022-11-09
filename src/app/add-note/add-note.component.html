@@ -1,0 +1,99 @@
+<div class="container text-start">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> ADD NOTE </mat-panel-title>
+    </mat-expansion-panel-header>
+      <form #addNoteForm="ngForm">
+        <mat-form-field class="full-width" appearance="standard">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            [(ngModel)]="note.title"
+            name="title"
+            #title="ngModel"
+            required
+          />
+          <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+            <div *ngIf="title.errors?.['required']">Title is required​.</div> ​          ​
+          </div>
+  
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="standard">
+
+          <mat-label>Content</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="note.content"
+            name="content"
+            #content="ngModel"
+            minlength="5"
+            required
+          ></textarea>
+          <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
+            <div *ngIf="content.errors?.['required']">Content is required​.</div> ​          ​
+            <div *ngIf="content.errors?.['minlength']">Note Content Should Minimum Be 5 Characters​.</div> ​          ​
+          </div>
+
+        </mat-form-field>
+        <!-- date-picker  -->
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Remainder Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="datepicker"
+            [(ngModel)]="note.reminderDate"
+            name="remainderDate"
+            #remainderDate="ngModel"
+            required
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>
+                Apply
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+          <div *ngIf="remainderDate?.invalid && (remainderDate?.dirty || remainderDate?.touched)">
+            <div *ngIf="remainderDate.errors?.['required']">Remainder Date is required​.</div> ​          ​
+          </div>
+        </mat-form-field>
+        <!-- date-picker-end -->
+        <mat-form-field class="full-width" appearance="standard">
+          <mat-label>Add Category</mat-label>
+          <input
+            matInput
+            [(ngModel)]="note.category"
+            name="category"
+            #category="ngModel"
+          />
+        </mat-form-field>
+        <div id="priority-group">
+          <label>Priority</label>
+          <mat-radio-group
+            name="rating"
+            id="radio-group"
+            aria-label="rating"
+            [(ngModel)]="note.priority"
+            #rating="ngModel"
+          >
+            <mat-radio-button value="Low">Low</mat-radio-button>
+            <mat-radio-button value="Medium">Medium </mat-radio-button>
+            <mat-radio-button value="High">High</mat-radio-button>
+            <mat-radio-button value="Critical">Critical</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="add()" [disabled]="addNoteForm.invalid">
+            <mat-icon color="primary">save</mat-icon>
+          </button>
+        </div>
+      </form>
+  </mat-expansion-panel>
+</div>

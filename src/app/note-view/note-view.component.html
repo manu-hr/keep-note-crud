@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="search">
+        <app-search></app-search>
+    </div>
+
+    <div *ngIf="addNoteView" class="add-note">
+        <app-add-note (noteAdded)="addNote($event)"></app-add-note>
+    </div>
+
+    <div class="list" >
+        <div  *ngFor="let note of notes" >
+            <app-note [note]="note" (ondelete)="deleteNote($event)"></app-note>
+        </div>
+        <div *ngIf="!notes" >
+            No Notes
+        </div>
+    </div>
+
+    <div class="add-note-button">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="addNoteView = !addNoteView">
+          <mat-icon *ngIf="!addNoteView else removeView">add</mat-icon>
+          <ng-template #removeView><mat-icon >cancel</mat-icon></ng-template>
+        </button>
+    </div>
+
+</div>
+

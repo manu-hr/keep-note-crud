@@ -1,0 +1,30 @@
+<div class="container">
+  <div  (click)="showActions = !showActions">
+    <mat-card class="example-card">
+      <mat-card-title
+        >{{ note?.title }} <mat-icon [color]="iconColor">{{ icon }}</mat-icon>
+      </mat-card-title>
+      <mat-card-subtitle>{{
+        note?.reminderDate | date: "short"
+      }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>{{ note?.content }}</p>
+        <mat-chip disableRipple="true">{{ note?.category }}</mat-chip>
+      </mat-card-content>
+      <mat-card-actions class="action-buttons" *ngIf="showActions">
+        <button mat-button color="primary">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+        <button mat-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="onDelete(note!.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-button color="accent">
+          <mat-icon>notifications</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

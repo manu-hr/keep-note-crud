@@ -1,0 +1,22 @@
+/* #searchButton {
+    padding: 0 0.8em;
+    margin : 0 8px;
+    background-color: rgb(19	51	128	);
+    color: white;
+}
+
+input {
+    padding: 0.1em;
+    background-color: rgb(19	51	128	);
+    color: grey;
+}
+
+.topContent {
+    width: fit-content;
+    padding: 0.2em 0.8em;
+    border-radius: 3px;
+} */
+
+.example-full-width {
+    width: 100%;
+}
